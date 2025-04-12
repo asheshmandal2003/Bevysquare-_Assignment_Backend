@@ -21,7 +21,7 @@ const getTodos = async (req, res, next) => {
 
     const skip = (page - 1) * limit;
     const [todos, total] = await Promise.all([
-      Todo.find().skip(skip).limit(limit),
+      Todo.find().skip(skip).limit(limit).sort({ createdAt: -1 }),
       Todo.countDocuments(),
     ]);
 
